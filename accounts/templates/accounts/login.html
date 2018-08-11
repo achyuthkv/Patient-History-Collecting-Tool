@@ -1,0 +1,75 @@
+<head>
+
+<style>
+
+body {
+    background-image:"28237.jpg";
+    background-color: #b3e8fe;
+
+}
+
+
+    
+#div1 {
+        
+
+        background-color:  #4fc8fc
+;
+        width: 400px;
+        border: 10px  #026a97;
+        padding: 25px;
+        margin: 25px;
+
+        border-top-style: outset;
+        border-left-style: outset;
+        border-bottom-style: outset;
+        border-right-style: outset;
+        border-radius: 5px;
+        font-size: 110%;
+        position: relative;
+        left: 440px;
+        border: 
+
+}
+
+#div2 {
+    
+    background-color:  #4fc8fc
+;
+    width: 300px;
+    border: 34px  #026a97;
+    padding: 25px;
+    margin: 10px;
+
+    border-top-style: inset;
+    border-left-style: inset;
+    border-bottom-style: inset;
+    border-right-style: inset;
+    border-radius: 5px;
+    position: relative;
+    font-size: 110%;
+
+}
+
+</style>
+
+<body>
+{% extends 'base.html' %}
+{% block body %}
+<div class="container" id="div1">
+    <h1>LOGIN</h1>
+    <br>
+    <br>
+
+    <div class="container" id="div2">
+   <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button method="post",type="submit">Login</button>
+    </form>
+    </div>
+</div>
+{% endblock %}
+</div>
+</body>
+</head>
