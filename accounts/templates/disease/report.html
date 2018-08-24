@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      
+    </div>
+    <div class="col-md-6">
+      
+      <hr>
+      
+
+      {% for quest in answers %}
+        <h4>{{ quest.user }}&nbsp&nbsp&nbsp{{ quest.question}}&nbsp&nbsp&nbsp{{quest.answer}}</h4>
+        <br>
+      
+      {% endfor %}
+     
+      <h4>
+
+    </div>
+    <div class="col-md-3">
+      
+    </div>
+  </div>
+</div>
+{% endblock %}

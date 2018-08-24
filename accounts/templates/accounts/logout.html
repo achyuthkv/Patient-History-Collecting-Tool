@@ -1,13 +1,39 @@
- 
+<head>
 
+<style type="text/css">
+	
+	 #d1 {
+         text-align: center;
+         width: 600px;
+         padding-left: 14px;
+         margin-top: 80px;
+         margin-left: 370px;
+         background-color: #f2f2f2;
+         border-top-style: outset;
+        border-left-style: outset;
+        border-bottom-style: inset;
+        border-right-style: inset;
+        border-radius: 8px;
+ 
+    }
+
+</style>
 
 {% extends 'base.html' %}
-<div class="container">
+<body>
+
 {% block body %}
-    <h1>logged out</h1>
+<div class="container" id="d1">
+    <h1 style="font-family: Times New Roman; font-size: 350%; text-align-last: center;">Logged out</h1>
+    <br>
     <p>
-    	you have logged out
+    	You have successfully logged out of your account.
     </p>
+    <br>
   
+    <p><i>Please visit us again.</i></p>
+
   </div>
 {% endblock %}  
+</body>
+</head>

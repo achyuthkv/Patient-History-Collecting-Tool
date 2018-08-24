@@ -1,31 +1,32 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather|Oswald:400,700,300' rel='stylesheet' type='text/css'>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block head %}
-
+        <title>Base</title>
         {% endblock %}
-
         <style>
-          
-          body {
-            background-image:url('{{ STATIC_URL }}28237.jpg');
-
-            background-color: #eaf1fc;
-            background-position: center;
-            font-family: georgia;
+          body{
+            background: url('{% static "images/img19.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
           }
-
-
-
         </style>
     </head>
     <body>
-
         <br>
-        <div class="container" >
-            <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <div class="container">
+            <nav class="navbar navbar-default">
             <div class="container-fluid">
               <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -34,7 +35,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">knowurture</a>
+                <a class="navbar-brand" href="/" style="font-family: TimesNewRoman;">CURIS</a>
               </div>
               <div id="navbar" class="navbar-collapse collapse">
                 {% if user.is_authenticated %}
@@ -60,12 +61,95 @@
             </div><!--/.container-fluid -->
           </nav>
         </div>
-        {% block body %}
-        {% endblock %}
+        
+
+<style type="text/css">
+
+                body {
+
+                                padding: 2em;
+
+                                font-family: Merriweather;
+
+                                background-color: #fe9;
+
+                }
+
+                h1,h2,h3 {
+
+                                font-family: Oswald;
+
+                }
+
+                a {
+
+                                padding: .5em;
+
+                                border-radius: 4px;
+
+                                background: #888;
+
+                                color: #fff;
+
+                                text-decoration: none;
+
+                }
+
+                ul {
+
+                                list-style: none;
+
+                                }
+
+                .success {
+
+                                background-color: #2f8;
+
+                                padding: 1em;
+
+                                width: 50%;
+
+                }
+
+                .warning {
+
+                                background-color: #f62;
+
+                                padding: 1em;
+
+                                width: 50%;
+
+                }
+
+</style>
+
+                
+</head>
+
+<body>
+
+ 
+
+{% if messages %}
+
+<div class="messages">
+
+    {% for message in messages %}
+
+    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+ 
+
+{% block body %}
+
+{% endblock body %}
+       
     </body>
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
 </html>

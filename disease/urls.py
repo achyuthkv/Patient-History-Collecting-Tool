@@ -1,12 +1,36 @@
-from django.conf.urls import url
-from django.conf.urls.static import static
-from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
-from .import views
+from django.conf.urls import include, url
+
+from django.contrib import admin
+
+ 
+
+from disease.views import answer_reader, QuestionDetail, QuizDetail, QuizList
+
+ 
+from disease.views import report
+ 
+
 urlpatterns = [
 
- 	url(r'^symptom',views.symptom,name='symptom'),
- 	url(r'^question',views.question_page,name='question_page'),
-    url(r'^check/(?P<qid>\d+)/$', views.check, name='check')
+    url('^accounts/', include('django.contrib.auth.urls')),
 
- 	]
+    url(r'^admin/', admin.site.urls),
+
+    url(r'^$', QuizList.as_view(), name="quiz-list"),
+
+    url(r'^quiz-(?P<pk>\d+)$',
+
+        login_required(QuizDetail.as_view()), name="quiz-detail"),
+
+    url(r'^question-(?P<pk>\d+)$',
+
+        login_required(QuestionDetail.as_view()), name="question-detail"),
+
+    url(r'^answer-(?P<question_pk>\d+)$',
+
+        login_required(answer_reader), name="answer-reader"),
+    url(r'^diseases/report',report)
+
+    ]

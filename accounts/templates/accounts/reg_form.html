@@ -1,13 +1,66 @@
+<head>
+	<style type="text/css">
+		
+	#body {
+
+	     margin: 0;
+	     padding: 0;
+	     background: #eff0f2;
+	     text-align: center;
+
+   		 }
+
+   	#h1 {
+
+   		font-size: 200%;
+   		font-family: Times New Roman;
+   		font-style: bold;
+   	}
+
+
+	#d2 {
+	     
+	     text-align: left;
+         width: 600px;
+         padding-left: 14px;
+         margin-top: 20px;
+         margin-left: 370px;
+         background-color: #f2f2f2;
+         border-top-style: outset;
+        border-left-style: outset;
+        border-bottom-style: inset;
+        border-right-style: inset;
+        border-radius: 8px;
+
+		}
+
+	#btn1 {
+		font-family: Georgia;
+		text-align: center; 
+        display: inline-block;
+        width: 200px;
+        position: relative;
+        left: 33%;
+	}
+
+	</style>
 {% extends 'base.html' %}
 
+<body>
 {% block body %}
-<div class="container">
-	<h1>register</h1>
+<div class="container" id="d2">
+	<h1 style="font-family: Times New Roman; font-size: 350%; text-align-last: center;">Registration<br></h1>
+	<br>
 	<form method="post">
 		{% csrf_token %}
 		{{ form.as_p }}
-		<button type="submit">submit</button>
+		<br>
+		<p style="font-family: Georgia;"><strong> <i>Please enter accurate details.</i></strong></p>
+		<br>
+		<button class="btn btn-primary btn-lg" type="submit" id="btn1">Submit</button>
 	</form>
 </div>
 
 {% endblock %} 
+</body>
+</head>

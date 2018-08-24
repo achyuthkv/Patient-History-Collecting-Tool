@@ -1,26 +1,52 @@
-# -*- coding: utf-8 -*-
-
+from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
+
+class Disease(models.Model):
+
+    class Meta:
+        verbose_name = "Disease"
+        verbose_name_plural = "Diseases"
+
+    def __str__(self):
+        return self.title
+
+    title = models.CharField(max_length=50, default="")
+    content = models.TextField()
+
+
 class Question(models.Model):
-	question = models.CharField(max_length=200)
 
-	def __str__(self):
-		return self.question
+    class Meta:
+        verbose_name = "True/false question"
+        verbose_name_plural = "True/false questions"
 
-class stomach(models.Model):
-	question=models.CharField(max_length=200)
+    def __str__(self):
+        return self.statement
 
-	def __str__(self):
-		return self.question
+    def next(self):
+        """The next question in the quiz, or None if this is the last"""
+        # Note: this is expensive (linked list would be better), but quizzes are short
+        questions = list(self.question.question_set.all())
+        if not (self == questions[-1]):
+            current_pos = questions.index(self)
+            return questions[current_pos + 1]
 
-	def get_absolute_url(self):
-		return reverse("check",kwargs={id:self.id})
+    question = models.ForeignKey(Disease)
+    statement = models.CharField(max_length=200)
+    description=models.CharField(max_length=400,default='')
+    answer = models.BooleanField("True?")
 
-class headache(models.Model):
-	question=models.CharField(max_length=200)
 
-	def __str__(self):
-		return self.question
+class UserAnswer(models.Model):
 
+    class Meta:
+        verbose_name = "User answer"
+        verbose_name_plural = "User answers"
+
+    def __str__(self):
+        return "{}: {}: {}".format(self.user, self.question, self.answer)
+
+    user = models.ForeignKey(User)
+    question = models.ForeignKey(Question)
+    answer = models.BooleanField()
